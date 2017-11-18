@@ -132,17 +132,19 @@ public class OrderAction extends ActionSupport implements ModelDriven<Order> {
 		return "findByOid";
 	}
 
-	// 为订单付款:
+	/*// 为订单付款:
 	public String payOrder() throws IOException {
 		// 1.修改数据:
 		Order currOrder = orderService.findByOid(order.getOid());
 		currOrder.setAddr(order.getAddr());
 		currOrder.setName(order.getName());
 		currOrder.setPhone(order.getPhone());
+		System.out.println("??????111");
 		// 修改订单
 		orderService.update(currOrder);
 		// 2.完成付款:
 		// 付款需要的参数:
+		System.out.println("??????");
 		String p0_Cmd = "Buy"; // 业务类型:
 		String p1_MerId = "10001126856";// 商户编号:
 		String p2_Order = order.getOid().toString();// 订单编号:
@@ -191,9 +193,20 @@ public class OrderAction extends ActionSupport implements ModelDriven<Order> {
 		orderService.update(currOrder);
 		this.addActionMessage("支付成功!订单编号为: "+r6_Order +" 付款金额为: "+r3_Amt);
 		return "msg";
+	}*/
+	public String payOrder() throws IOException {
+		// 1.修改数据:
+		Order currOrder = orderService.findByOid(order.getOid());
+		currOrder.setAddr(order.getAddr());
+		currOrder.setName(order.getName());
+		currOrder.setPhone(order.getPhone());
+		// 修改订单的状态:
+		// 修改订单状态为2:已经付款:
+		currOrder.setState(2);
+		orderService.update(currOrder);
+		this.addActionMessage("支付成功!订单编号为: "+currOrder.getOid()+" 付款金额为: "+currOrder.getTotal());
+		return "msg";
 	}
-	
-	// 修改订单的状态:
 	public String updateState(){
 		Order currOrder = orderService.findByOid(order.getOid());
 		currOrder.setState(4);
