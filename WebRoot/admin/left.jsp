@@ -20,8 +20,7 @@
 	<a href="javascript: d.openAll();">展开所有</a> | <a href="javascript: d.closeAll();">关闭所有</a>
 	
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/dtree.js"></script>
-	<script type="text/javascript">
-		<!--
+	<script type="text/javascript">		
 		d = new dTree('d');
 		d.add('01',-1,'系统菜单树');
 		d.add('0101','01','用户管理','','','mainFrame');
@@ -34,8 +33,7 @@
 		d.add('010401','0104','商品管理','${pageContext.request.contextPath}/adminProduct_findAll.action?page=1','','mainFrame');
 		d.add('0105','01','订单管理');
 		d.add('010501','0105','订单管理','${pageContext.request.contextPath}/adminOrder_findAll.action?page=1','','mainFrame');
-		document.write(d);
-		//-->
+		document.write(d);		
 	</script>
 </div>	</td>
   </tr>
